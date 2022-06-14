@@ -74,3 +74,9 @@
     background-image: url("img/mine.jpg");
     height: calc(100vh - 140px);;
 }
+
+.text-container{
+    border: solid 2px #d4cfc7;
+    background-color: #e5ded5;
+    color: white;
+}
