@@ -1,0 +1,71 @@
+
+
+:root{
+    --bs-body-bg: #a5a5a5;
+    --bs-color-primary: rgb(2, 158, 116);
+    --bs-link-color: black;
+    --bs-gray-dark: #343a40;
+}
+
+.bg-under-container{
+    height: 150px;
+    background-color: var(--bs-color-primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.main-container{
+    background-color: white;
+    height: calc(100vh - 32px);
+    margin-top: 16px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.user-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+
+.avatar-container{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.img-container{
+    width: 40px;
+    height: 40px;
+    border: solid;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.img-size{
+    max-width: 37px;
+}
+
+.link-container{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+}
+
+.notification{
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: solid white;
+    color: white;
+}
+
+.notification-off{
+    position: absolute;
+    top: 1px;
+    right: 3px;
+}
