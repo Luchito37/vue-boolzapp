@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.9/vue.js'
+        integrity='sha512-o9SZrtqlGkpa7EF+dDrNjEdRFFYhymlrBzDKpolHNolxsyx0IcXAbEm9i1e8QpoiMgEdKZVtY8XiK1t8i6jVDA=='
+        crossorigin='anonymous'></script>
+    
+
+
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-under-container"></div>
+
+    <div id="app">
+        <div class="container main-container">
+            <div class="row px-0 h-100 overflow-hidden">
+
+
+                <!-------------------------COLONNA DI SINISTRA----------------------->
+
+
+
+                    <div class="col-4 px-0 h-100">
+                        <div class="d-flex flex-column h-100">
+                            <div class="user-container">
+                                <div class="avatar-container">
+                                    <div class="img-container shadow-lg">
+                                        <img class="img-size" src="img/avatar_io.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <span>Sofia</span>
+                                    </div>
+                                </div>
+                                <div class="link-container">
+                                    <div><a class="my-link" href="#"><i class="fa-solid fa-circle-notch"></i></a></div>
+                                    <div><a class="my-link" href="#"><i class="fa-solid fa-message"></i></a></div>
+                                    <div><a class="my-link" href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a></div>
+                                </div>
+                            </div>
+                            <div class="user-container bg-info">
+                                <div class="avatar-container">
+                                    <div class="img-container notification ">
+                                        <span class="notification-off"><i class="fa-solid fa-bell-slash"></i></span>
+                                    </div>
+                                    <div>
+                                        <div><span><strong><small> Ricevi notifiche di nuovi messaggi</small></strong></span></div>
+                                        <div><span><small class="text-secondary"><u>Attiva notifiche desktop</u></small></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="px-1 py-1 shadow-lg">
+                                    <form class="d-flex" role="search">
+                                        <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        <input class="form-control" type="search" placeholder="Search your chat.." aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class=" d-flex flex-column overflow-auto">
+                                <div v-for="(contact, i) in listaContatti"
+                                    class="user-container p-2 border-top d-flex" :class="{'clicked-element': isSelected(contact)}"   @click="activeUser(contact)">
+                                    <div class="avatar-container">
+                                        <div class="img-container">
+                                            <img class="img-size" :src="'img/avatar' + contact.avatar + '.jpg'"
+                                                alt="Avatar 1">
+                                        </div>
+                                        <div class="px-3 lh-1">
+                                            <h6 class="m-0">{{contact.name}}</h6>
+                                            <span>Ultimo messaggio</span>
+                                        </div>
+                                    </div>
+                                    <p class=" flex-end">12:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+
+                <!-------------------------COLONNA DI DESTRA----------------------->  
+                
+                
+                    <div class="col px-0 h-100">
+                        <div class="user-container">
+                            <div v-if="active" class="avatar-container">
+                                <div class="img-container shadow-lg">
+                                    <img class="img-size" :src="`img/avatar${currentUser.avatar}.jpg`" :alt="currentUser.name">
+                                </div>
+                                <div>
+                                    <span >{{currentUser.name}}</span>
+                                    <span><small class="text-secondary"> ultimo accesso oggi alle 12:00</small> </span>
+                                </div>
+                            </div>
+                            <div class="link-container">
+                                <div><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <div><i class="fa-solid fa-paperclip"></i></div>
+                                <div><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                            </div>
+                        </div>
+                        <div class="chat-container px-5 py-3 overflow-auto">
+                                <div class="d-flex justify-content-end align-items-end flex-column">
+                                    <div class="d-flex align-items-end bg-success text-white px-3 py-3 mx-2 my-2 rounded-4 flex-column " v-for="userMessage in currentUser.messages" :class="`message ${userMessage.status}`">
+                                        <div class="text">{{userMessage.message}}</div>
+                                        <div style="font-size: 10px;">{{userMessage.date}}</div>
+                                    </div>
+                                </div>
+                                
+                        </div>
+                        <div class="text-container">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="px-3 py-3">
+                                    <div><i class="fa-solid fa-face-smile"></i></div>
+                                </div>
+                                <div style="flex-grow: 1;">
+                                    <div class="input-group input-group-sm">
+                                        <input type="text" placeholder="write a text..." class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+                                </div>
+                                <div class="px-3 py-3">
+                                    <div><i class="fa-solid fa-microphone"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="mainscript.js"></script>
+</body>
+</html>
