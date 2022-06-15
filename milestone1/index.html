@@ -26,7 +26,7 @@
 
     <div id="app">
         <div class="container main-container">
-            <div class="row px-0">
+            <div class="row px-0 h-100 overflow-hidden">
 
 
                 <!-------------------------COLONNA DI SINISTRA----------------------->
@@ -34,54 +34,56 @@
 
 
                     <div class="col-4 px-0">
-                        <div class="user-container">
-                            <div class="avatar-container">
-                                <div class="img-container shadow-lg">
-                                    <img class="img-size" src="img/avatar_io.jpg" alt="">
-                                </div>
-                                <div>
-                                    <span>Sofia</span>
-                                </div>
-                            </div>
-                            <div class="link-container">
-                                <div><i class="fa-solid fa-circle-notch"></i></div>
-                                <div><i class="fa-solid fa-message"></i></div>
-                                <div><i class="fa-solid fa-ellipsis-vertical"></i></div>
-                            </div>
-                        </div>
-                        <div class="user-container bg-info">
-                            <div class="avatar-container">
-                                <div class="img-container notification ">
-                                    <span class="notification-off"><i class="fa-solid fa-bell-slash"></i></span>
-                                </div>
-                                <div>
-                                    <div><span><strong><small> Ricevi notifiche di nuovi messaggi</small></strong></span></div>
-                                    <div><span><small class="text-secondary"><u>Attiva notifiche desktop</u></small></span></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="px-1 py-1 shadow-lg">
-                                <form class="d-flex" role="search">
-                                    <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                    <input class="form-control" type="search" placeholder="Search your chat.." aria-label="Search">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-column flex-grow-1 overflow-auto">
-                            <div v-for="(contact, i) in listaContatti"
-                                class="user-container p-2 border-top">
+                        <div class="d-flex flex-column h-100">
+                            <div class="user-container">
                                 <div class="avatar-container">
-                                    <div class="img-container">
-                                        <img class="img-size" :src="'img/avatar' + contact.avatar + '.jpg'"
-                                            alt="Avatar 1">
+                                    <div class="img-container shadow-lg">
+                                        <img class="img-size" src="img/avatar_io.jpg" alt="">
                                     </div>
-                                    <div class="px-3 lh-1">
-                                        <h6 class="m-0">{{contact.name}}</h6>
-                                        <span>Ultimo messaggio</span>
+                                    <div>
+                                        <span>Sofia</span>
                                     </div>
                                 </div>
-                                <p class=" flex-end">12:00</p>
+                                <div class="link-container">
+                                    <div><a class="my-link" href="#"><i class="fa-solid fa-circle-notch"></i></a></div>
+                                    <div><a class="my-link" href="#"><i class="fa-solid fa-message"></i></a></div>
+                                    <div><a class="my-link" href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a></div>
+                                </div>
+                            </div>
+                            <div class="user-container bg-info">
+                                <div class="avatar-container">
+                                    <div class="img-container notification ">
+                                        <span class="notification-off"><i class="fa-solid fa-bell-slash"></i></span>
+                                    </div>
+                                    <div>
+                                        <div><span><strong><small> Ricevi notifiche di nuovi messaggi</small></strong></span></div>
+                                        <div><span><small class="text-secondary"><u>Attiva notifiche desktop</u></small></span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="px-1 py-1 shadow-lg">
+                                    <form class="d-flex" role="search">
+                                        <button class="btn btn-outline-secondary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                        <input class="form-control" type="search" placeholder="Search your chat.." aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class=" d-flex flex-column overflow-auto">
+                                <div v-for="(contact, i) in listaContatti"
+                                    class="user-container p-2 border-top d-flex">
+                                    <div class="avatar-container">
+                                        <div class="img-container">
+                                            <img class="img-size" :src="'img/avatar' + contact.avatar + '.jpg'"
+                                                alt="Avatar 1">
+                                        </div>
+                                        <div class="px-3 lh-1">
+                                            <h6 class="m-0">{{contact.name}}</h6>
+                                            <span>Ultimo messaggio</span>
+                                        </div>
+                                    </div>
+                                    <p class=" flex-end">12:00</p>
+                                </div>
                             </div>
                         </div>
                     </div>
