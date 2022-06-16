@@ -188,7 +188,26 @@ const appVue = new Vue({
                 return false
             }
         },
-        
+        invio() {
+            this.currentUser.messages.push(
+                {
+                    date: "10/01/2020 15:50:00",
+                    message: `${this.sendMessage}`,
+                    status: "sent",
+                },
+            )
+            this.sendMessage = ""
+        },
+        risposta() {
+            setTimeout(() =>
+                this.currentUser.messages.push(
+                    {
+                        date: "10/01/2020 15:51:00",
+                        message: "ok",
+                        status: "received",
+                    }), 1000);
+            
+        }
 
         
     }

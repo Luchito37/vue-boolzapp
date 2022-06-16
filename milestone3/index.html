@@ -105,9 +105,9 @@
                                 </div>
                             </div>
                             <div class="link-container">
-                                <div><a class="my-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a></div>
-                                <div><a class="my-link" href="#"><i class="fa-solid fa-paperclip"></i></a></div>
-                                <div><a class="my-link" href="#"><i class="fa-solid fa-ellipsis-vertical"></i></a></div>
+                                <div><i class="fa-solid fa-magnifying-glass"></i></div>
+                                <div><i class="fa-solid fa-paperclip"></i></div>
+                                <div><i class="fa-solid fa-ellipsis-vertical"></i></div>
                             </div>
                         </div>
                         <div class="chat-container px-5 py-3 overflow-auto">
@@ -124,9 +124,9 @@
                                 <div class="px-3 py-3">
                                     <div><i class="fa-solid fa-face-smile"></i></div>
                                 </div>
-                                <div style="flex-grow: 1;">
+                                <div v-if="active" style="flex-grow: 1;">
                                     <div class="input-group input-group-sm">
-                                        <input type="text" placeholder="write a text..." class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input v-model="invioMessagio" @keyup.enter="invio(), risposta()" type="text" placeholder="write a text..." class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                 </div>
                                 <div class="px-3 py-3">
