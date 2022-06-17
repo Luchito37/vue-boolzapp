@@ -169,10 +169,42 @@ const appVue = new Vue({
   // Conterrà tutti i dati necessari all'applicazione
     data: {
         listaContatti: contatti,
+        utenteAttivo: contatti[0],
+        testoInviato: "",
     },
 	
 	// Conterrà una serie di funzioni
 	methods: {
+        impostaUtenteAttivo(contact){
+            this.utenteAttivo = contact
+        },
+
+        //attraverso il 'kayup' e impostando queste due funzioni sottostanti permetto all'imput di poter stampare il messaggio inserito dall'utente
+
+        invio(){
+            this.utenteAttivo.messages.push(
+                {
+                    date: "10/01/2020 15:50:00",
+                    message: this.testoInviato,
+                    status: "sent",
+                },
+            )
+            this.testoInviato = ""
+        },
+
+        //creo una risposta statica che apparirà dopo 1s
+
+        risposta(){
+            setTimeout(() =>
+                this.utenteAttivo.messages.push(
+                {
+                    date: "10/01/2020 15:51:00",
+                    message: "OK!!",
+                    status: "received",
+                }), 1000);
+            
+            
+        }
 		// funzioni che useremo nell'app
 	}
 });

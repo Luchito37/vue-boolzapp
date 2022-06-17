@@ -1,3 +1,6 @@
+// Prima riga del file js
+dayjs.extend(dayjs_plugin_customParseFormat);
+
 const contatti = [
     {
         name: "Michele",
@@ -171,6 +174,8 @@ const appVue = new Vue({
         listaContatti: contatti,
         messages: contatti[0].messages,
         currentUser: "",
+        sendMessage: "",
+        active: false,
     },
 	
 	// Conterrà una serie di funzioni
@@ -200,6 +205,7 @@ const appVue = new Vue({
         },
         risposta() {
             setTimeout(() =>
+
                 this.currentUser.messages.push(
                     {
                         date: "10/01/2020 15:51:00",
@@ -207,7 +213,7 @@ const appVue = new Vue({
                         status: "received",
                     }), 1000);
             
-        }
+        },
 
         
     }

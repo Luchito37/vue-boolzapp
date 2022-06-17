@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.8/dayjs.min.js' integrity='sha512-kZ+x2gdehn6OZMWZSp3Vt5R+v9hQTYEATQwaUfWquhxbvNVAy6IRtYs7asdyxKUTqG0I5ZqBqnzcBrpnHJCAGw==' crossorigin='anonymous'></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.8/plugin/customParseFormat.min.js'
+        integrity='sha512-/rAikt6xZJcTqu7olN/2DFvqXDEUC31/yyFAYrSGi087R+j54QTWWRJxHtbN5NjppOxT3d1gk4ZwkPWX88W35w==' crossorigin='anonymous'></script>
 
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -70,11 +75,11 @@
                                 </div>
                             </div>
                             <div class=" d-flex flex-column overflow-auto">
-                                <div v-for="(contact, i) in listaContatti"
+                                <div v-for="(contact, i) in listaContatti" 
                                     class="user-container p-2 border-top d-flex" :class="{'clicked-element': isSelected(contact)}"   @click="activeUser(contact)">
                                     <div class="avatar-container">
                                         <div class="img-container">
-                                            <img class="img-size" :src="'img/avatar' + contact.avatar + '.jpg'"
+                                            <img class="img-size"  :src="'img/avatar' + contact.avatar + '.jpg'"
                                                 alt="Avatar 1">
                                         </div>
                                         <div class="px-3 lh-1">
@@ -113,7 +118,7 @@
                         <div class="chat-container px-5 py-3 overflow-auto">
                                 <div class="d-flex justify-content-end align-items-end flex-column">
                                     <div class="d-flex align-items-end bg-success text-white px-3 py-3 mx-2 my-2 rounded-4 flex-column " v-for="userMessage in currentUser.messages" :class="`message ${userMessage.status}`">
-                                        <div class="text">{{userMessage.message}}</div>
+                                        <div  class="text">{{userMessage.message}}</div>
                                         <div style="font-size: 10px;">{{userMessage.date}}</div>
                                     </div>
                                 </div>
@@ -126,7 +131,7 @@
                                 </div>
                                 <div v-if="active" style="flex-grow: 1;">
                                     <div class="input-group input-group-sm">
-                                        <input v-model="invioMessagio" @keyup.enter="invio(), risposta()" type="text" placeholder="write a text..." class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input v-model="sendMessage" @keyup.enter="invio(), risposta()" type="text" placeholder="write a text..." class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
                                 </div>
                                 <div class="px-3 py-3">

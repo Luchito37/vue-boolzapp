@@ -85,3 +85,23 @@
     background-color: #e5ded5;
     color: white;
 }
+
+.messaggioRicevuto {
+    background-color: #ffffff;
+}
+
+.messaggioInviato {
+    background-color: #D5F9BA;
+}
+
+.posizioneMessaggioRicevuto{
+    display: flex;
+    flex-direction: column;
+    align-items: start ;
+}
+
+.posizioneMessaggioInviato{
+    display: flex;
+    flex-direction: column;
+    align-items: end ;
+} 
