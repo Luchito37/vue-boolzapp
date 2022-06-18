@@ -87,21 +87,23 @@
 }
 
 .messaggioRicevuto {
-    background-color: #ffffff;
+    justify-content: start;
 }
 
 .messaggioInviato {
-    background-color: #D5F9BA;
+    justify-content: end;
 }
 
 .posizioneMessaggioRicevuto{
     display: flex;
     flex-direction: column;
     align-items: start ;
+    background-color: #ffffff;
 }
 
 .posizioneMessaggioInviato{
     display: flex;
     flex-direction: column;
     align-items: end ;
+    background-color: #D5F9BA
 } 
